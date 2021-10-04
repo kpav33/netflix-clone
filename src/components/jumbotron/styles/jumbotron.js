@@ -57,4 +57,11 @@ export const Image = styled.img`
   height: auto;
 `;
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  /* ${Item} is referencing another styled component, just make sure to only reference components that are declared above the component you want to reference it in  */
+  @media (max-width: 1000px) {
+    ${Item}:last-of-type h2 {
+      margin-bottom: 50px;
+    }
+  }
+`;
