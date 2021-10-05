@@ -28,14 +28,12 @@ export const Title = styled.h1`
   }
 `;
 
-export const Frame = styled.div`
-  margin-bottom: 40px;
-`;
-
 export const Item = styled.div`
   color: white;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
+  margin: auto;
   max-width: 670px;
+  width: 100%;
 
   &:first-of-type {
     margin-top: 3em;
@@ -66,7 +64,7 @@ export const Header = styled.div`
   }
 
   @media (max-width: 600px) {
-    width: 16px;
+    font-size: 16px;
   }
 `;
 
