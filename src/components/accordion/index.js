@@ -8,6 +8,7 @@ import {
   Body,
 } from "./styles/accordion";
 
+// Use Context to share data between different parts in a compound component
 const ToggleContext = createContext();
 
 export default function Accordion({ children, ...restProps }) {

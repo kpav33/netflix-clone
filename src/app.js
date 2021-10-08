@@ -7,6 +7,7 @@ import * as ROUTES from "./constants/routes";
 
 export default function App() {
   return (
+    // App routing
     <Router>
       <Route exact path={ROUTES.BROWSE}>
         <Browse />

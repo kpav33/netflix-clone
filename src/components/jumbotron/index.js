@@ -15,6 +15,7 @@ export default function Jumbotron({
   ...restProps
 }) {
   return (
+    // Use props to determine flex direction
     <Item {...restProps}>
       <Inner direction={direction}>{children}</Inner>
     </Item>

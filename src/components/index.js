@@ -1,3 +1,4 @@
+// Simplify importing by exporting all pages in a single index.js file
 export { default as Jumbotron } from "./jumbotron";
 export { default as Footer } from "./footer";
 export { default as Accordion } from "./accordion";

@@ -3,6 +3,7 @@ import { Link as ReactRouterLink } from "react-router-dom";
 import { Background, Container, Logo, ButtonLink } from "./styles/header";
 
 export default function Header({ bg = true, children, ...restProps }) {
+  // Only show background banner on certain pages
   return bg ? <Background {...restProps}>{children}</Background> : children;
 }
 
