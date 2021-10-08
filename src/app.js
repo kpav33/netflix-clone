@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home, Browse, Signin, Signup } from "./pages";
 import * as ROUTES from "./constants/routes";
 
-// Finished at 03:10 (Firebase Connection)
+// Finished at 04:01 (SignUp Page)
 
 export default function App() {
   return (

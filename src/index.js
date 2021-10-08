@@ -8,6 +8,7 @@ import { FirebaseContext } from "./context/firebase";
 
 ReactDOM.render(
   <>
+    {/* Pass firebase to Context and wrap app with it */}
     <FirebaseContext.Provider value={{ firebase }}>
       <GlobalStyles />
       <App />

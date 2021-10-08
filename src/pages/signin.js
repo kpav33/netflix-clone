@@ -1,21 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { FirebaseContext } from "../context/firebase";
 import HeaderContainer from "../containers/header";
 import FooterContainer from "../containers/footer";
 import { Form } from "../components";
+import * as ROUTES from "../constants/routes";
 
 export default function SignIn() {
+  const history = useHistory();
+  // Get firebase from FirebaseContext
+  const { firebase } = useContext(FirebaseContext);
+
+  // Store user's email and password
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  // Check for empty fields
   const isInvalid = password === "" || emailAddress === "";
 
-  console.log(emailAddress, password);
+  // console.log(emailAddress, password);
 
+  // Handle Sign In button click
   function handleSignIn(event) {
     event.preventDefault();
 
-    // firebase work here
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(emailAddress, password)
+      .then(() => {
+        // Push authenticated user to the browse page
+        history.push(ROUTES.BROWSE);
+      })
+      .catch((error) => {
+        setEmailAddress("");
+        setPassword("");
+        setError(error.message);
+      });
   }
 
   return (
@@ -28,6 +49,7 @@ export default function SignIn() {
             <Form.Input
               placeholder="Email address"
               value={emailAddress}
+              // Get user's typing and store it into state
               onChange={({ target }) => setEmailAddress(target.value)}
             ></Form.Input>
             <Form.Input
