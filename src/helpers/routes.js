@@ -23,3 +23,26 @@ export function IsUserRedirect({ user, loggedInPath, children, ...rest }) {
     />
   );
 }
+
+// Protected route
+export function ProtectedRoute({ user, children, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      // Use location for tracking where user was
+      render={({ location }) => {
+        if (user) {
+          return children;
+        }
+
+        if (!user) {
+          return (
+            <Redirect to={{ pathname: "signin", state: { from: location } }} />
+          );
+        }
+
+        return null;
+      }}
+    />
+  );
+}
