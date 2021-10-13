@@ -3,11 +3,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Home, Browse, Signin, Signup } from "./pages";
 import * as ROUTES from "./constants/routes";
 import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
+import { useAuthListener } from "./hooks";
 
 // Finished at 04:01 (SignUp Page)
 
 export default function App() {
-  const user = false;
+  const { user } = useAuthListener();
+  // photoURL changed key name!!!
 
   return (
     // App routing
