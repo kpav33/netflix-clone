@@ -5,11 +5,12 @@ import * as ROUTES from "./constants/routes";
 import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
 import { useAuthListener } from "./hooks";
 
-// Finished at 04:01 (SignUp Page)
+// Finished at 04:58 (Utils directory and setup)
+// User mail, pass password
 
 export default function App() {
   const { user } = useAuthListener();
-  // photoURL changed key name!!!
+  // console.log(user);
 
   return (
     // App routing
