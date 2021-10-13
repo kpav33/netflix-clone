@@ -49,6 +49,7 @@ export default function SignIn() {
             <Form.Input
               placeholder="Email address"
               value={emailAddress}
+              type="email"
               // Get user's typing and store it into state
               onChange={({ target }) => setEmailAddress(target.value)}
             ></Form.Input>
