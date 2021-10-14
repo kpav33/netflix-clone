@@ -9,6 +9,7 @@ import { useAuthListener } from "./hooks";
 // User mail, pass password
 
 export default function App() {
+  // Get user if they were previously already logged in
   const { user } = useAuthListener();
   // console.log(user);
 
