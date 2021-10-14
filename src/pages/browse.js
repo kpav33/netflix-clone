@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { FirebaseContext } from "../context/firebase";
+import React from "react";
+import BrowseContainer from "../containers/browse";
 import { useContent } from "../hooks";
 import selectionFilter from "../utils/selection-filter";
 
 export default function Browse() {
-  const { firebase } = useContext(FirebaseContext);
-
   // Get series and films
   const { series } = useContent("series");
   const { films } = useContent("films");
@@ -15,10 +13,5 @@ export default function Browse() {
   const slides = selectionFilter({ series, films });
   console.log(slides);
 
-  return (
-    <div>
-      <h1>Browse</h1>
-      <button onClick={() => firebase.auth().signOut()}>Sign out</button>
-    </div>
-  );
+  return <BrowseContainer slides={slides} />;
 }
