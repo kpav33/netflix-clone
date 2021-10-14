@@ -11,7 +11,7 @@ export default function Browse() {
 
   // Get series, films data with genre titles to use for slides
   const slides = selectionFilter({ series, films });
-  console.log(slides);
+  // console.log(slides);
 
   return <BrowseContainer slides={slides} />;
 }
