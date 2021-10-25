@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { FirebaseContext } from "../context/firebase";
 import SelectProfileContainer from "./profiles";
 import { Header, Loading, Card } from "../components";
+import FooterContainer from "./footer";
 import * as ROUTES from "../constants/routes";
 import logo from "../logo.svg";
 
@@ -115,6 +116,7 @@ export default function BrowseContainer({ slides }) {
           </Card>
         ))}
       </Card.Group>
+      <FooterContainer />
     </>
   ) : (
     <SelectProfileContainer user={user} setProfile={setProfile} />

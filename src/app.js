@@ -5,7 +5,7 @@ import * as ROUTES from "./constants/routes";
 import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
 import { useAuthListener } from "./hooks";
 
-// Finished at 06:35 (Card list)
+// Finished at 07:33 (Player Component)
 // User mail, pass password
 
 export default function App() {
