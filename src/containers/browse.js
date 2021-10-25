@@ -1,19 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FirebaseContext } from "../context/firebase";
 import SelectProfileContainer from "./profiles";
-import { Header, Loading } from "../components";
+import { Header, Loading, Card } from "../components";
 import * as ROUTES from "../constants/routes";
 import logo from "../logo.svg";
 
 export default function BrowseContainer({ slides }) {
+  // Set category to either films or series
+  const [category, setCategory] = useState("series");
   // Search by keyword
   const [searchTerm, setSearchTerm] = useState("");
   // Store current user profile
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
+  const [slideRows, setSlideRows] = useState([]);
+
+  // Get user from firebase
   const { firebase } = useContext(FirebaseContext);
   const user = firebase.auth().currentUser || {};
 
+  // Remove the loading user effect after 3 seconds
   useEffect(() => {
     // console.log(profile);
     setTimeout(() => {
@@ -23,6 +29,11 @@ export default function BrowseContainer({ slides }) {
 
   //   <button onClick={() => firebase.auth().signOut()}>Sign out</button>
 
+  // Get data based on user selection of either series or films
+  useEffect(() => {
+    setSlideRows(slides[category]);
+  }, [slides, category]);
+
   return profile.displayName ? (
     <>
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
@@ -31,8 +42,18 @@ export default function BrowseContainer({ slides }) {
         <Header.Frame>
           <Header.Group>
             <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
-            <Header.TextLink>Series</Header.TextLink>
-            <Header.TextLink>Films</Header.TextLink>
+            <Header.TextLink
+              active={category === "series" ? true : false}
+              onClick={() => setCategory("series")}
+            >
+              Series
+            </Header.TextLink>
+            <Header.TextLink
+              active={category === "films" ? true : false}
+              onClick={() => setCategory("films")}
+            >
+              Films
+            </Header.TextLink>
           </Header.Group>
           <Header.Group>
             <Header.Search
@@ -67,6 +88,13 @@ export default function BrowseContainer({ slides }) {
           <Header.PlayButton>Play</Header.PlayButton>
         </Header.Feature>
       </Header>
+      <Card.Group>
+        {slideRows.map((slideItem) => (
+          <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
+            <Card.Title>{slideItem.title}</Card.Title>
+          </Card>
+        ))}
+      </Card.Group>
     </>
   ) : (
     <SelectProfileContainer user={user} setProfile={setProfile} />
