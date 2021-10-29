@@ -5,7 +5,7 @@ import * as ROUTES from "./constants/routes";
 import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
 import { useAuthListener } from "./hooks";
 
-// Finished at 08:50 (Opt Form test)
+// Finished at 09:23 (Home page test)
 // User mail, pass password
 
 export default function App() {
