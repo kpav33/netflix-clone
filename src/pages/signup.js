@@ -8,15 +8,19 @@ import * as ROUTES from "../constants/routes";
 
 export default function SignUp() {
   const history = useHistory();
+  // Get firebase from FirebaseContext
   const { firebase } = useContext(FirebaseContext);
 
+  // Track user's input for email and password
   const [firstName, setFirstName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  // Check for empty fields
   const isInvalid = firstName === "" || password === "" || emailAddress === "";
 
+  // Handle Sign Un button click
   function handleSignup(event) {
     event.preventDefault();
 
@@ -24,6 +28,7 @@ export default function SignUp() {
       .auth()
       .createUserWithEmailAndPassword(emailAddress, password)
       .then((result) =>
+        // Create a new user and store it in firebase
         result.user
           .updateProfile({
             displayName: firstName,

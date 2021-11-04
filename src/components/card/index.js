@@ -20,6 +20,7 @@ import {
 export const FeatureContext = createContext();
 
 export default function Card({ children, ...restProps }) {
+  // Show additional information about the feature
   const [showFeature, setShowFeature] = useState(false);
   const [itemFeature, setItemFeature] = useState({});
 

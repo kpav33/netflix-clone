@@ -5,6 +5,7 @@ import { Container, Button, Overlay, Inner, Close } from "./styles/player";
 export const PlayerContext = createContext();
 
 export default function Player({ children, ...restProps }) {
+  // Show or hide the video player
   const [showPlayer, setShowPlayer] = useState(false);
 
   return (
@@ -17,6 +18,7 @@ export default function Player({ children, ...restProps }) {
 Player.Video = function PlayerVideo({ src, ...restProps }) {
   const { showPlayer, setShowPlayer } = useContext(PlayerContext);
 
+  // Use React Portal to display the player
   return showPlayer
     ? ReactDom.createPortal(
         <Overlay

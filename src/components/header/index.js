@@ -54,6 +54,7 @@ Header.Search = function HeaderSearch({
   setSearchTerm,
   ...restProps
 }) {
+  // Change styling if user is trying to search for a feature
   const [searchActive, setSearchActive] = useState(false);
 
   return (

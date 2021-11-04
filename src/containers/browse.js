@@ -15,6 +15,7 @@ export default function BrowseContainer({ slides }) {
   // Store current user profile
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
+  // Display appropriate content depending on the search term
   const [slideRows, setSlideRows] = useState([]);
 
   // Get user from firebase
@@ -28,8 +29,6 @@ export default function BrowseContainer({ slides }) {
       setLoading(false);
     }, 3000);
   }, [profile.displayName]);
-
-  //   <button onClick={() => firebase.auth().signOut()}>Sign out</button>
 
   // Get data based on user selection of either series or films
   useEffect(() => {

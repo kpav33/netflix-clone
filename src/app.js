@@ -5,13 +5,11 @@ import * as ROUTES from "./constants/routes";
 import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
 import { useAuthListener } from "./hooks";
 
-// Finished at 09:23 (Home page test)
 // User mail, pass password
 
 export default function App() {
   // Get user if they were previously already logged in
   const { user } = useAuthListener();
-  // console.log(user);
 
   return (
     // App routing
